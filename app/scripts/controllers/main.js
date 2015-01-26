@@ -10,16 +10,14 @@
 angular.module('shhhhApp')
   .controller('MainCtrl', function ($scope, $interval) {
 
-  $scope.labels = ["Third", "Second", "First"];
-  $scope.series = ['Series A'];
-  $scope.data = [
-    [0, 0, 0]
-  ];
-  $scope.showTopThreeAlert = false;
-
   var isOver = false;
   var sum = 0;
 
+  $scope.labels = ["Third", "Second", "First"];
+  $scope.series = ['Series A'];
+  $scope.data = [[0, 0, 0]];
+
+  $scope.showTopThreeAlert = false;
 
   function updateData(data) {
     $scope.slowMeter = soundMeter.slow;
