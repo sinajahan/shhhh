@@ -10,6 +10,48 @@
 angular.module('shhhhApp')
   .controller('MainCtrl', function ($scope, $interval) {
 
+  $scope.labels = ["Third", "Second", "First"];
+  $scope.series = ['Series A'];
+  $scope.data = [
+    [0, 0, 0]
+  ];
+  $scope.showTopThreeAlert = false;
+
+  var isOver = false;
+  var sum = 0;
+
+
+  function updateData(data) {
+    $scope.slowMeter = soundMeter.slow;
+
+    if (isOver) {
+      sum += $scope.slowMeter;
+    }
+
+    if ($scope.isNoiseOverLimit() && !isOver) {
+      isOver = true;
+    }
+
+    if (!$scope.isNoiseOverLimit() && isOver) {
+      isOver = false;
+      if (sum > $scope.data[0][0]) {
+        $scope.data[0].shift();
+        $scope.data[0].push(sum);
+        $scope.data[0].sort();
+
+        $scope.showTopThreeAlert = true;
+        window.setTimeout(function() {
+          $scope.showTopThreeAlert = false;
+        }, 2000);
+      }
+      sum = 0;
+    }
+  }
+
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+
     $scope.options = [
       { label: '3%', value: 3 },
       { label: '5%', value: 5 },
@@ -38,10 +80,6 @@ angular.module('shhhhApp')
 
     $scope.getData = function() {
       return $scope.slowMeter * 100;
-    }
-
-    function updateData(data) {
-      $scope.slowMeter = soundMeter.slow;
     }
 
     // Meter class that generates a number correlated to audio volume.

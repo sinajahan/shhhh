@@ -1,5 +1,6 @@
 <div class="container">
-  <div ng-show="isNoiseOverLimit()" class="alert alert-danger" role="alert">Keep it down!!!</div>
+  <div ng-show='showTopThreeAlert' class="alert alert-danger" role="alert">Shhh! Just got a new top three warning!</div>
+  <div ng-show="isNoiseOverLimit()" class="alert alert-warning" role="alert">Keep it down!!!</div>
   <form>
     <div class="form-group">
       <label>Current Noise Level</label>
@@ -20,6 +21,10 @@
       </select>
     </div>
   </form>
+
+  <h4> Highest cumulative volume outputs so far: </h4>
+  <canvas id="bar" class="chart chart-bar" data="data" labels="labels">
+  </canvas>
 
 
 </div>
