@@ -8,4 +8,4 @@
  * Controller of the shhhhApp
  */
 angular.module('shhhhApp')
-  .controller('AboutCtrl', function ($scope) {});
+  .controller('AboutCtrl', function () {});

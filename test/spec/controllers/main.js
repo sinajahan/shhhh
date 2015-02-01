@@ -6,7 +6,7 @@ describe('Controller: MainCtrl', function () {
   beforeEach(function() {
     module('shhhhApp');
     module(function ($provide) {
-      $provide.service('SoundMeter', function () { })
+      $provide.service('SoundMeter', function () { });
       var windowMock = { navigator: { getUserMedia: function() {} } };
       $provide.value('$window', windowMock);
     });
@@ -16,7 +16,7 @@ describe('Controller: MainCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, $injector) {
+  beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope

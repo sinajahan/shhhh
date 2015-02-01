@@ -6,7 +6,7 @@ describe('Service: SoundMeter', function () {
   beforeEach(function() {
     module('shhhhApp');
     module(function($provide) {
-      var mock = { createScriptProcessor: function() { return {}} };
+      var mock = { createScriptProcessor: function() { return {}; } };
       $provide.value('AudioContext', mock);
     });
   });
